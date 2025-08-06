@@ -431,58 +431,65 @@ export default function Portfolio() {
 
           {/* Mobile Hamburger Menu Button - Positioned absolutely on the right */}
           <button
-            className="md:hidden absolute right-2 sm:right-4 p-2 rounded-lg text-white hover:bg-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className={`md:hidden absolute right-2 sm:right-4 p-3 rounded-xl text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400 ${isMobileMenuOpen ? 'bg-white/25 shadow-lg' : 'hover:bg-white/15'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
             aria-expanded={isMobileMenuOpen}
           >
-            <div className="w-5 h-5 flex flex-col justify-center items-center">
-              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
-              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
+            <div className="w-6 h-6 flex flex-col justify-center items-center">
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
             </div>
           </button>
         </div>
 
         {/* Mobile Dropdown Menu */}
         <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-          <nav className="px-4 pb-4 space-y-2">
-            <a 
-              href="#about" 
-              className="block text-white/90 font-semibold hover:text-white transition-colors px-3 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About
-            </a>
-            <a 
-              href="#skills" 
-              className="block text-white/90 font-semibold hover:text-white transition-colors px-3 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Skills
-            </a>
-            <a 
-              href="#projects" 
-              className="block text-white/90 font-semibold hover:text-white transition-colors px-3 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Projects
-            </a>
-            <a 
-              href="#testimonials" 
-              className="block text-white/90 font-semibold hover:text-white transition-colors px-3 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Testimonials
-            </a>
-            <a 
-              href="#contact" 
-              className="block text-white/90 font-semibold hover:text-white transition-colors px-3 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Contact
-            </a>
-          </nav>
+          <div className="bg-white/10 backdrop-blur-lg border-t border-white/20">
+            <nav className="px-4 py-4 space-y-3">
+              <a 
+                href="#about" 
+                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-4 py-3 rounded-xl hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base border border-transparent hover:border-white/30"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="mr-3 text-lg">👤</span>
+                About
+              </a>
+              <a 
+                href="#skills" 
+                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-4 py-3 rounded-xl hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base border border-transparent hover:border-white/30"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="mr-3 text-lg">⚡</span>
+                Skills
+              </a>
+              <a 
+                href="#projects" 
+                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-4 py-3 rounded-xl hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base border border-transparent hover:border-white/30"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="mr-3 text-lg">💼</span>
+                Projects
+              </a>
+              <a 
+                href="#testimonials" 
+                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-4 py-3 rounded-xl hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base border border-transparent hover:border-white/30"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="mr-3 text-lg">⭐</span>
+                Testimonials
+              </a>
+              <a 
+                href="#contact" 
+                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-4 py-3 rounded-xl hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base border border-transparent hover:border-white/30"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="mr-3 text-lg">📧</span>
+                Contact
+              </a>
+            </nav>
+          </div>
         </div>
 
         {/* Mobile Navigation Menu - Removed since we only show My Profile on mobile */}
