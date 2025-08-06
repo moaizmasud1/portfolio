@@ -429,7 +429,7 @@ export default function Portfolio() {
           <div className="flex items-center gap-2 md:gap-3">
             <img src="/profile.jpg" alt="Logo" className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-xl sm:rounded-2xl object-cover shadow-lg" />
             <span className="font-black text-base sm:text-lg md:text-2xl tracking-tight text-white/95">My Profile</span>
-        </div>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-4 lg:gap-6">
@@ -438,110 +438,13 @@ export default function Portfolio() {
             <a href="#projects" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Projects</a>
             <a href="#testimonials" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Testimonials</a>
             <a href="#contact" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Contact</a>
-        </nav>
+          </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 sm:p-3 rounded-lg text-white hover:bg-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 touch-manipulation"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-            aria-expanded={isMobileMenuOpen}
-          >
-            <div className="w-5 h-5 sm:w-6 sm:h-6 flex flex-col justify-center items-center">
-              <span className={`block w-4 sm:w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
-              <span className={`block w-4 sm:w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-              <span className={`block w-4 sm:w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
-            </div>
-          </button>
+          {/* Mobile - Show only My Profile, no menu button */}
+          <div className="md:hidden"></div>
         </div>
 
-        {/* Mobile Navigation Menu */}
-        {isMobile ? (
-          <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-            <nav className="px-3 sm:px-4 pb-3 sm:pb-4 space-y-1">
-              <a 
-                href="#about" 
-                className="block text-white/90 font-semibold hover:text-white transition-colors px-3 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 touch-manipulation text-sm sm:text-base"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About
-              </a>
-              <a 
-                href="#skills" 
-                className="block text-white/90 font-semibold hover:text-white transition-colors px-3 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 touch-manipulation text-sm sm:text-base"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Skills
-              </a>
-              <a 
-                href="#projects" 
-                className="block text-white/90 font-semibold hover:text-white transition-colors px-3 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 touch-manipulation text-sm sm:text-base"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Projects
-              </a>
-              <a 
-                href="#testimonials" 
-                className="block text-white/90 font-semibold hover:text-white transition-colors px-3 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 touch-manipulation text-sm sm:text-base"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Testimonials
-              </a>
-              <a 
-                href="#contact" 
-                className="block text-white/90 font-semibold hover:text-white transition-colors px-3 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 touch-manipulation text-sm sm:text-base"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </a>
-            </nav>
-          </div>
-        ) : (
-          <motion.div
-            className="md:hidden overflow-hidden"
-            initial={false}
-            animate={{ height: isMobileMenuOpen ? 'auto' : 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            <nav className="px-4 pb-4 space-y-2">
-              <a 
-                href="#about" 
-                className="block text-white/80 font-semibold hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-purple-400"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About
-              </a>
-              <a 
-                href="#skills" 
-                className="block text-white/80 font-semibold hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-purple-400"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Skills
-              </a>
-              <a 
-                href="#projects" 
-                className="block text-white/80 font-semibold hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-purple-400"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Projects
-              </a>
-              <a 
-                href="#testimonials" 
-                className="block text-white/80 font-semibold hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-purple-400"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Testimonials
-              </a>
-              <a 
-                href="#contact" 
-                className="block text-white/80 font-semibold hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-purple-400"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </a>
-            </nav>
-          </motion.div>
-        )}
+        {/* Mobile Navigation Menu - Removed since we only show My Profile on mobile */}
       </header>
       {/* Hero Section with Parallax */}
       <section
