@@ -416,8 +416,9 @@ export default function Portfolio() {
       {/* Glassmorphism Header */}
       <header
         ref={headerRef}
-        className={`fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[96vw] sm:w-[95vw] max-w-5xl rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur-lg shadow-xl border border-white/20 transition-transform duration-500 pointer-events-auto ${isMobile ? 'translate-y-0 opacity-100' : (showHeader ? 'translate-y-0 opacity-100' : '-translate-y-32 opacity-0 pointer-events-none')}`}
+        className={`fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[96vw] sm:w-[95vw] max-w-5xl rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur-lg shadow-xl border border-white/20 transition-transform duration-500 pointer-events-auto ${isMobile ? 'mobile-header translate-y-0 opacity-100' : (showHeader ? 'translate-y-0 opacity-100' : '-translate-y-32 opacity-0 pointer-events-none')}`}
         onMouseEnter={() => !isMobile && setShowHeader(true)}
+        style={isMobile ? { transform: 'translate(-50%, 0)', opacity: 1 } : undefined}
       >
         <div className="flex items-center justify-center px-2 sm:px-4 md:px-8 py-2 sm:py-4 relative">
           {/* Desktop Navigation - Centered */}
