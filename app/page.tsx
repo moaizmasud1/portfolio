@@ -2364,6 +2364,11 @@ function ProjectCard({ project, index }: { project: { title: string; tech: strin
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={() => {
+        if (project.link) {
+          window.open(project.link, '_blank', 'noopener,noreferrer');
+        }
+      }}
     >
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-red-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -2475,8 +2480,12 @@ function ProjectCard({ project, index }: { project: { title: string; tech: strin
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full mt-auto px-0 py-4 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white font-bold text-base shadow-lg hover:from-purple-600 hover:via-pink-600 hover:to-red-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400 cursor-pointer group-hover:shadow-purple-500/50"
+            className="w-full mt-auto px-0 py-4 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white font-bold text-base shadow-lg hover:from-purple-600 hover:via-pink-600 hover:to-red-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400 cursor-pointer group-hover:shadow-purple-500/50 z-10 relative"
             whileHover={{ scale: 1.02, y: -2 }}
+            onClick={(e) => {
+              e.stopPropagation();
+              window.open(project.link, '_blank', 'noopener,noreferrer');
+            }}
           >
             View Project
           </motion.a>
