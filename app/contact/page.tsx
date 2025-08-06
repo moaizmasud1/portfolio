@@ -208,19 +208,19 @@ This message was sent from your portfolio contact form.
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
-        <header className="p-8">
+        <header className="fixed top-4 left-4 z-50">
           <Link href="/">
             <motion.div
-              className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors cursor-pointer"
+              className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors cursor-pointer bg-black/20 backdrop-blur-lg px-4 py-2 rounded-xl border border-white/20 hover:bg-black/30"
               whileHover={getMobileAnimation({ x: -5 })}
             >
-              <ArrowLeft size={24} />
-              <span className="font-bold">Back to Portfolio</span>
+              <ArrowLeft size={20} />
+              <span className="font-bold text-sm">Back to Portfolio</span>
             </motion.div>
           </Link>
         </header>
 
-        <div className="pt-32 pb-32 px-4 md:px-8 lg:px-16">
+        <div className="pt-20 pb-32 px-4 md:px-8 lg:px-16">
           <motion.div
             className="relative group"
             initial={{ opacity: 0, y: 50 }}
