@@ -25,7 +25,7 @@ import Link from "next/link"
 import { AnimatePresence } from "framer-motion"
 import SplashCursor from "../components/SplashCursor";
 import WhatsAppIcon from "./components/WhatsAppIcon";
-import Preloader from "./components/Preloader";
+
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -92,7 +92,7 @@ export default function Portfolio() {
     
   ];
   const [leftMsgIndex, setLeftMsgIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
@@ -412,25 +412,14 @@ export default function Portfolio() {
   };
 
   return (
-    <div ref={containerRef} className={`text-white overflow-x-hidden ${isLoading ? 'hidden' : ''}`}>
-      <AnimatePresence>
-        {isLoading && (
-          <Preloader onComplete={() => setIsLoading(false)} />
-        )}
-      </AnimatePresence>
+    <div ref={containerRef} className="text-white overflow-x-hidden">
       {/* Glassmorphism Header */}
       <header
         ref={headerRef}
         className={`fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[92vw] sm:w-[95vw] max-w-5xl rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur-lg shadow-xl border border-white/20 transition-transform duration-500 pointer-events-auto ${isMobile ? 'translate-y-0 opacity-100' : (showHeader ? 'translate-y-0 opacity-100' : '-translate-y-32 opacity-0 pointer-events-none')}`}
         onMouseEnter={() => !isMobile && setShowHeader(true)}
       >
-        <div className="flex items-center justify-between px-3 sm:px-4 md:px-8 py-3 sm:py-4">
-          {/* Logo Section */}
-          <div className="flex items-center gap-2 md:gap-3">
-            <img src="/profile.jpg" alt="Logo" className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-xl sm:rounded-2xl object-cover shadow-lg" />
-            <span className="font-black text-base sm:text-lg md:text-2xl tracking-tight text-white/95">My Profile</span>
-          </div>
-
+        <div className="flex items-center justify-center px-3 sm:px-4 md:px-8 py-3 sm:py-4">
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-4 lg:gap-6">
             <a href="#about" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">About</a>
@@ -440,13 +429,8 @@ export default function Portfolio() {
             <a href="#contact" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Contact</a>
           </nav>
 
-          {/* Mobile - Show only My Profile, no menu button */}
-          <div className="md:hidden"></div>
-        </div>
-
-        {/* Mobile Navigation - Always visible below profile */}
-        <div className="md:hidden px-3 sm:px-4 pb-3 sm:pb-4">
-          <nav className="flex justify-center gap-2 sm:gap-3">
+          {/* Mobile Navigation */}
+          <nav className="md:hidden flex gap-2 sm:gap-3">
             <a href="#about" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">About</a>
             <a href="#skills" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">Skills</a>
             <a href="#projects" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">Projects</a>
