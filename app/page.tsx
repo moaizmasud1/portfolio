@@ -418,9 +418,9 @@ export default function Portfolio() {
         ref={headerRef}
         className={`fixed top-2 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[98vw] sm:w-[95vw] max-w-5xl rounded-xl sm:rounded-3xl bg-white/15 backdrop-blur-lg shadow-xl border border-white/20 transition-transform duration-500 pointer-events-auto ${isMobile ? 'mobile-header translate-y-0 opacity-100' : (showHeader ? 'translate-y-0 opacity-100' : '-translate-y-32 opacity-0 pointer-events-none')}`}
         onMouseEnter={() => !isMobile && setShowHeader(true)}
-        style={isMobile ? { transform: 'translate(-50%, 0)', opacity: 1, background: 'transparent', border: 'none', boxShadow: 'none' } : undefined}
+        style={isMobile ? { transform: 'translate(-50%, 0)', opacity: 1, background: 'transparent', border: 'none', boxShadow: 'none', width: 'auto', maxWidth: 'none' } : undefined}
       >
-        <div className={`flex items-center justify-center relative ${isMobile ? 'px-4 py-2' : 'px-3 sm:px-4 md:px-8 py-3 sm:py-4'}`}>
+        <div className={`flex items-center justify-center relative ${isMobile ? 'px-0 py-0' : 'px-3 sm:px-4 md:px-8 py-3 sm:py-4'}`}>
           {/* Desktop Navigation - Centered */}
           <nav className="hidden md:flex gap-4 lg:gap-6">
             <a href="#about" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">About</a>
@@ -447,7 +447,7 @@ export default function Portfolio() {
 
         {/* Mobile Dropdown Menu */}
         <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-          <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-xl mt-2">
+          <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-xl mt-3">
             <nav className="px-3 py-3 space-y-2">
               <a 
                 href="#about" 
