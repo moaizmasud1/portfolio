@@ -420,7 +420,15 @@ export default function Portfolio() {
         onMouseEnter={() => !isMobile && setShowHeader(true)}
         style={isMobile ? { transform: 'translate(-50%, 0)', opacity: 1 } : undefined}
       >
-        <div className="flex items-center justify-center px-3 sm:px-4 md:px-8 py-3 sm:py-4 relative">
+        <div className={`flex items-center justify-center relative ${isMobile ? 'px-4 py-2' : 'px-3 sm:px-4 md:px-8 py-3 sm:py-4'}`}>
+          {/* Mobile Title - Only visible on mobile */}
+          <div className="md:hidden flex items-center gap-2">
+            <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-xs">MM</span>
+            </div>
+            <span className="text-white font-bold text-sm">Moaiz Masud</span>
+          </div>
+          
           {/* Desktop Navigation - Centered */}
           <nav className="hidden md:flex gap-4 lg:gap-6">
             <a href="#about" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">About</a>
@@ -432,61 +440,61 @@ export default function Portfolio() {
 
           {/* Mobile Hamburger Menu Button - Positioned absolutely on the right */}
           <button
-            className={`md:hidden absolute right-3 sm:right-4 p-2.5 rounded-lg text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400 ${isMobileMenuOpen ? 'bg-white/25 shadow-lg' : 'hover:bg-white/15'}`}
+            className={`md:hidden absolute right-2 p-2 rounded-lg text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400 ${isMobileMenuOpen ? 'bg-white/30 shadow-lg' : 'bg-white/10 hover:bg-white/20'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
             aria-expanded={isMobileMenuOpen}
           >
-            <div className="w-5 h-5 flex flex-col justify-center items-center">
-              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
-              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
+            <div className="w-6 h-6 flex flex-col justify-center items-center">
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
             </div>
           </button>
         </div>
 
         {/* Mobile Dropdown Menu */}
         <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-          <div className="bg-white/10 backdrop-blur-lg border-t border-white/20">
-            <nav className="px-4 py-4 space-y-3">
+          <div className="bg-white/15 backdrop-blur-xl border-t border-white/30">
+            <nav className="px-3 py-3 space-y-2">
               <a 
                 href="#about" 
-                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-4 py-3 rounded-xl hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base border border-transparent hover:border-white/30"
+                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-3 py-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm border border-transparent hover:border-white/30"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="mr-3 text-lg">👤</span>
+                <span className="mr-2 text-base">👤</span>
                 About
               </a>
               <a 
                 href="#skills" 
-                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-4 py-3 rounded-xl hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base border border-transparent hover:border-white/30"
+                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-3 py-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm border border-transparent hover:border-white/30"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="mr-3 text-lg">⚡</span>
+                <span className="mr-2 text-base">⚡</span>
                 Skills
               </a>
               <a 
                 href="#projects" 
-                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-4 py-3 rounded-xl hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base border border-transparent hover:border-white/30"
+                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-3 py-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm border border-transparent hover:border-white/30"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="mr-3 text-lg">💼</span>
+                <span className="mr-2 text-base">💼</span>
                 Projects
               </a>
               <a 
                 href="#testimonials" 
-                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-4 py-3 rounded-xl hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base border border-transparent hover:border-white/30"
+                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-3 py-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm border border-transparent hover:border-white/30"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="mr-3 text-lg">⭐</span>
+                <span className="mr-2 text-base">⭐</span>
                 Testimonials
               </a>
               <a 
                 href="#contact" 
-                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-4 py-3 rounded-xl hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base border border-transparent hover:border-white/30"
+                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-3 py-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm border border-transparent hover:border-white/30"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="mr-3 text-lg">📧</span>
+                <span className="mr-2 text-base">📧</span>
                 Contact
               </a>
             </nav>
