@@ -412,7 +412,7 @@ export default function Portfolio() {
   };
 
   return (
-    <div ref={containerRef} className="text-white overflow-x-hidden">
+    <div ref={containerRef} className={`text-white overflow-x-hidden ${isLoading ? 'hidden' : ''}`}>
       <AnimatePresence>
         {isLoading && (
           <Preloader onComplete={() => setIsLoading(false)} />
