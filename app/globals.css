@@ -14,9 +14,10 @@ html {
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: #000;
+  background: linear-gradient(135deg, #000000 0%, #111111 25%, #1a1a1a 50%, #222222 75%, #000000 100%);
   color: #fff;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* Custom scrollbar */
@@ -56,7 +57,7 @@ h6 {
 
 /* Logo gradient color suggestion */
 .logo-gradient {
-  background: linear-gradient(90deg, #7c3aed 0%, #a259f7 100%);
+  background: linear-gradient(90deg, #ffffff 0%, #cccccc 50%, #ffffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -65,7 +66,7 @@ h6 {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #cccccc 50%, #ffffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -177,6 +178,33 @@ h6 {
   animation: float 3s ease-in-out infinite;
 }
 
+/* Simple neon pulse animation */
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
+  }
+  50% {
+    box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+  }
+}
+
+.neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+/* Monochrome border animation */
+@keyframes monochrome-border {
+  0% { border-color: #ffffff; }
+  25% { border-color: #cccccc; }
+  50% { border-color: #ffffff; }
+  75% { border-color: #cccccc; }
+  100% { border-color: #ffffff; }
+}
+
+.rainbow-border {
+  animation: monochrome-border 3s linear infinite;
+}
+
 /* Stagger animation delays */
 .stagger-1 {
   animation-delay: 0.1s;
@@ -196,10 +224,10 @@ h6 {
 
 .midnight-glow {
   text-shadow:
-    0 0 8px #a259f7,
-    0 0 16px #a259f7,
-    0 0 32px #a259f7,
-    0 0 64px #a259f7;
+    0 0 8px #ffffff,
+    0 0 16px #cccccc,
+    0 0 32px #ffffff,
+    0 0 64px #cccccc;
   color: #fff;
 }
 
@@ -247,22 +275,22 @@ h6 {
 /* Traveling shadow animation for hero name */
 @keyframes traveling-shadow {
   0% {
-    text-shadow: 0 0 0 #a259f7, 0 0 0 #fff;
+    text-shadow: 0 0 0 #ffffff, 0 0 0 #cccccc;
   }
   20% {
-    text-shadow: 4px 0 16px #a259f7, 0 0 0 #fff;
+    text-shadow: 4px 0 16px #ffffff, 0 0 0 #cccccc;
   }
   40% {
-    text-shadow: 0 4px 24px #fff, 0 0 0 #a259f7;
+    text-shadow: 0 4px 24px #cccccc, 0 0 0 #ffffff;
   }
   60% {
-    text-shadow: -4px 0 16px #a259f7, 0 0 0 #fff;
+    text-shadow: -4px 0 16px #ffffff, 0 0 0 #cccccc;
   }
   80% {
-    text-shadow: 0 -4px 24px #fff, 0 0 0 #a259f7;
+    text-shadow: 0 -4px 24px #ffffff, 0 0 0 #cccccc;
   }
   100% {
-    text-shadow: 0 0 0 #a259f7, 0 0 0 #fff;
+    text-shadow: 0 0 0 #ffffff, 0 0 0 #cccccc;
   }
 }
 
@@ -281,7 +309,7 @@ h6 {
 }
 
 .shiny-text {
-  background: linear-gradient(110deg, #fff 10%, #a259f7 40%, #fff 60%);
+  background: linear-gradient(110deg, #fff 10%, #ffffff 30%, #cccccc 50%, #ffffff 70%, #fff 90%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -291,11 +319,11 @@ h6 {
 }
 
 .jelly-green-btn {
-  background: linear-gradient(135deg, #baff39 0%, #4de94c 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #ffffff 0%, #cccccc 50%, #ffffff 100%);
+  color: #000;
   border: none;
   border-radius: 2.5rem;
-  box-shadow: 0 8px 32px 0 rgba(186,255,57,0.18), 0 2.5px 0 0 #4de94c inset, 0 1rem 2.5rem 0 rgba(77,233,76,0.13);
+  box-shadow: 0 8px 32px 0 rgba(255,255,255,0.3), 0 2.5px 0 0 #cccccc inset, 0 1rem 2.5rem 0 rgba(204,204,204,0.2);
   font-weight: 900;
   letter-spacing: 0.04em;
   padding: 1.5rem 3rem;
@@ -322,5 +350,190 @@ h6 {
 }
 .jelly-green-btn:hover, .jelly-green-btn:focus {
   transform: scale(1.08) skewX(-4deg);
-  box-shadow: 0 12px 40px 0 rgba(186,255,57,0.22), 0 3.5px 0 0 #4de94c inset, 0 1.5rem 3rem 0 rgba(77,233,76,0.18);
+  box-shadow: 0 12px 40px 0 rgba(255,255,255,0.4), 0 3.5px 0 0 #cccccc inset, 0 1.5rem 3rem 0 rgba(204,204,204,0.3);
+}
+
+/* Blob animations */
+@keyframes blob1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes blob2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-30px, 50px) scale(1.1);
+  }
+  66% {
+    transform: translate(20px, -20px) scale(0.9);
+  }
+}
+
+.animate-blob1 {
+  animation: blob1 7s infinite;
+}
+
+.animate-blob2 {
+  animation: blob2 7s infinite;
+}
+
+/* Floating dot animation */
+@keyframes float-dot {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float-dot {
+  animation: float-dot 3s ease-in-out infinite;
+}
+
+/* Global Animation Disabler - Removes all animations on all devices */
+* {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+/* Ensure header is always visible and functional */
+header {
+  transform: translate(-50%, 0) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transition: all 0.3s ease !important;
+  z-index: 9999 !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  backdrop-filter: blur(25px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  position: fixed !important;
+  left: 50% !important;
+}
+
+/* Prevent header from moving on hover */
+header:hover {
+  transform: translate(-50%, 0) !important;
+}
+
+/* Disable all hover effects */
+*:hover {
+  transform: none !important;
+  scale: none !important;
+  animation: none !important;
+  background-color: inherit !important;
+  color: inherit !important;
+  border-color: inherit !important;
+  box-shadow: inherit !important;
+}
+
+/* Disable all framer-motion animations */
+[data-framer-motion] {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+/* Disable all motion components */
+.motion-reduce\:animate-none {
+  animation: none !important;
+}
+
+.motion-reduce\:transform-none {
+  transform: none !important;
+}
+
+.motion-reduce\:transition-none {
+  transition: none !important;
+}
+
+/* Remove all animation delays */
+* {
+  animation-delay: 0s !important;
+  transition-delay: 0s !important;
+}
+
+/* Mobile-specific header improvements */
+@media (max-width: 768px) {
+  header {
+    background: rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(25px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Improve mobile menu button */
+  button[aria-label="Toggle mobile menu"] {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+  
+  /* Improve mobile menu items */
+  header nav a {
+    border: 1px solid transparent !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  header nav a:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: none !important;
+  }
+}
+
+/* Body class-based animation disabler */
+body.mobile-device * {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+/* Allow header transitions on mobile */
+body.mobile-device header * {
+  transition: all 0.3s ease !important;
+}
+
+body.mobile-device button[aria-label="Toggle mobile menu"] * {
+  transition: all 0.3s ease !important;
+}
+
+body.mobile-device *:hover {
+  transform: none !important;
+  scale: none !important;
+  animation: none !important;
+  background-color: inherit !important;
+  color: inherit !important;
+  border-color: inherit !important;
+  box-shadow: inherit !important;
+}
+
+/* Disable all framer-motion on mobile */
+body.mobile-device [data-framer-motion] {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+/* Disable all motion components on mobile */
+body.mobile-device .motion-reduce\:animate-none {
+  animation: none !important;
+}
+
+body.mobile-device .motion-reduce\:transform-none {
+  transform: none !important;
+}
+
+body.mobile-device .motion-reduce\:transition-none {
+  transition: none !important;
 }
