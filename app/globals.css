@@ -407,6 +407,13 @@ h6 {
   transform: none !important;
 }
 
+/* Allow preloader animations */
+.preloader * {
+  animation: inherit !important;
+  transition: inherit !important;
+  transform: inherit !important;
+}
+
 /* Ensure header is always visible and functional */
 header {
   transform: translate(-50%, 0) !important;
