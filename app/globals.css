@@ -544,27 +544,3 @@ body.mobile-device .motion-reduce\:transform-none {
 body.mobile-device .motion-reduce\:transition-none {
   transition: none !important;
 }
-
-/* Ensure mobile header is always visible */
-body.mobile-device header {
-  transform: translate(-50%, 0) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-}
-
-/* Ensure mobile hamburger button is always visible */
-body.mobile-device button[aria-label="Toggle mobile menu"] {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-/* Mobile header specific styles */
-.mobile-header {
-  transform: translate(-50%, 0) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-  z-index: 9999 !important;
-}

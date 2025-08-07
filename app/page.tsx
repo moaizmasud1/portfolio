@@ -25,7 +25,7 @@ import Link from "next/link"
 import { AnimatePresence } from "framer-motion"
 import SplashCursor from "../components/SplashCursor";
 import WhatsAppIcon from "./components/WhatsAppIcon";
-
+import Preloader from "./components/Preloader";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -92,7 +92,7 @@ export default function Portfolio() {
     
   ];
   const [leftMsgIndex, setLeftMsgIndex] = useState(0);
-
+  const [isLoading, setIsLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
@@ -413,84 +413,49 @@ export default function Portfolio() {
 
   return (
     <div ref={containerRef} className="text-white overflow-x-hidden">
+      <AnimatePresence>
+        {isLoading && (
+          <Preloader onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
+      
+      {/* Main content - hidden while preloader is running */}
+      <div className={isLoading ? 'hidden' : ''}>
       {/* Glassmorphism Header */}
       <header
         ref={headerRef}
-        className={`fixed top-2 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[98vw] sm:w-[95vw] max-w-5xl rounded-xl sm:rounded-3xl bg-white/15 backdrop-blur-lg shadow-xl border border-white/20 transition-transform duration-500 pointer-events-auto ${isMobile ? 'mobile-header translate-y-0 opacity-100' : (showHeader ? 'translate-y-0 opacity-100' : '-translate-y-32 opacity-0 pointer-events-none')}`}
+        className={`fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[92vw] sm:w-[95vw] max-w-5xl rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur-lg shadow-xl border border-white/20 transition-transform duration-500 pointer-events-auto ${isMobile ? 'translate-y-0 opacity-100' : (showHeader ? 'translate-y-0 opacity-100' : '-translate-y-32 opacity-0 pointer-events-none')}`}
         onMouseEnter={() => !isMobile && setShowHeader(true)}
-        style={isMobile ? { transform: 'translate(-50%, 0)', opacity: 1, background: 'transparent', border: 'none', boxShadow: 'none', width: 'auto', maxWidth: 'none' } : undefined}
       >
-        <div className={`flex items-center justify-center relative ${isMobile ? 'px-0 py-0' : 'px-3 sm:px-4 md:px-8 py-3 sm:py-4'}`}>
-          {/* Desktop Navigation - Centered */}
+        <div className="flex items-center justify-between px-3 sm:px-4 md:px-8 py-3 sm:py-4">
+          {/* Logo Section */}
+          <div className="flex items-center gap-2 md:gap-3">
+            <img src="/profile.jpg" alt="Logo" className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-xl sm:rounded-2xl object-cover shadow-lg" />
+            <span className="font-black text-base sm:text-lg md:text-2xl tracking-tight text-white/95">My Profile</span>
+        </div>
+
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-4 lg:gap-6">
             <a href="#about" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">About</a>
             <a href="#skills" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Skills</a>
             <a href="#projects" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Projects</a>
             <a href="#testimonials" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Testimonials</a>
             <a href="#contact" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Contact</a>
-          </nav>
+        </nav>
 
-          {/* Mobile Hamburger Menu Button - Only visible on mobile */}
-          <button
-            className={`md:hidden p-3 rounded-xl text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400 ${isMobileMenuOpen ? 'bg-white/30 shadow-lg' : 'bg-white/10 hover:bg-white/20'}`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-            aria-expanded={isMobileMenuOpen}
-          >
-            <div className="w-6 h-6 flex flex-col justify-center items-center">
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
-            </div>
-          </button>
+          {/* Mobile - Show only My Profile, no menu button */}
+          <div className="md:hidden"></div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-          <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-xl mt-3">
-            <nav className="px-3 py-3 space-y-2">
-              <a 
-                href="#about" 
-                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-3 py-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm border border-transparent hover:border-white/30"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <span className="mr-2 text-base">👤</span>
-                About
-              </a>
-              <a 
-                href="#skills" 
-                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-3 py-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm border border-transparent hover:border-white/30"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <span className="mr-2 text-base">⚡</span>
-                Skills
-              </a>
-              <a 
-                href="#projects" 
-                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-3 py-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm border border-transparent hover:border-white/30"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <span className="mr-2 text-base">💼</span>
-                Projects
-              </a>
-              <a 
-                href="#testimonials" 
-                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-3 py-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm border border-transparent hover:border-white/30"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <span className="mr-2 text-base">⭐</span>
-                Testimonials
-              </a>
-              <a 
-                href="#contact" 
-                className="flex items-center text-white/90 font-semibold hover:text-white transition-all duration-300 px-3 py-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm border border-transparent hover:border-white/30"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <span className="mr-2 text-base">📧</span>
-                Contact
-              </a>
-            </nav>
-          </div>
+        {/* Mobile Navigation - Always visible below profile */}
+        <div className="md:hidden px-3 sm:px-4 pb-3 sm:pb-4">
+          <nav className="flex justify-center gap-2 sm:gap-3">
+            <a href="#about" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">About</a>
+            <a href="#skills" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">Skills</a>
+            <a href="#projects" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">Projects</a>
+            <a href="#testimonials" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">Testimonials</a>
+            <a href="#contact" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">Contact</a>
+          </nav>
         </div>
 
         {/* Mobile Navigation Menu - Removed since we only show My Profile on mobile */}
@@ -527,16 +492,16 @@ export default function Portfolio() {
         </div>
         {/* Animated Left-Side Scrolling Texts - Hidden on mobile */}
         <div className="absolute left-0 top-1/2 -translate-y-1/2 z-30 w-64 flex flex-col items-start pointer-events-none select-none hidden md:flex">
-                      <motion.div
-              key={leftMsgIndex}
-              initial={{ y: 40, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.7 }}
-              className="text-lg md:text-xl font-bold text-white/80 bg-black/30 px-5 py-3 rounded-r-2xl shadow-lg"
-            >
-              {leftMessages[leftMsgIndex]}
-            </motion.div>
+          <motion.div
+            key={leftMsgIndex}
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -40, opacity: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-lg md:text-xl font-bold text-white/80 bg-black/30 px-5 py-3 rounded-r-2xl shadow-lg"
+          >
+            {leftMessages[leftMsgIndex]}
+          </motion.div>
         </div>
         <motion.div className="parallax-bg absolute inset-0 z-0" style={{ y: backgroundY }}>
           <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80"></div>
@@ -1641,9 +1606,10 @@ export default function Portfolio() {
                         key={i}
                         initial={{ scale: 0, rotate: -180 }}
                         whileInView={{ scale: 1, rotate: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 + i * 0.1 }}
                         viewport={{ once: true }}
                         whileHover={{ scale: 1.1, rotate: 180 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 + i * 0.1 }}
+                        transition={{ duration: 0.5 }}
                       >
                         <Star size={20} className="text-yellow-400 fill-current hover:text-yellow-300 transition-colors" />
                       </motion.div>
@@ -1942,6 +1908,7 @@ export default function Portfolio() {
           </motion.button>
         )}
       </AnimatePresence>
+      </div> {/* Close the main content div */}
     </div>
   );
 }
