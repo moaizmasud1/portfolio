@@ -458,9 +458,13 @@ export default function Portfolio() {
           </button>
         </div>
 
-        {/* Mobile Dropdown Menu */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white/10 backdrop-blur-lg border-t border-white/20 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-          <nav className="px-4 pb-4 pt-2 space-y-1">
+        {/* Mobile Dropdown Menu - Positioned on left side */}
+        <div className={`md:hidden fixed top-0 left-0 h-full w-64 bg-white/15 backdrop-blur-lg shadow-xl border-r border-white/20 transition-all duration-300 ease-in-out z-40 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+          <nav className="px-6 py-8 space-y-4">
+            <div className="flex items-center gap-3 mb-8">
+              <img src="/profile.jpg" alt="Logo" className="w-8 h-8 rounded-xl object-cover shadow-lg" />
+              <span className="font-black text-lg tracking-tight text-white/95">Menu</span>
+            </div>
             <a 
               href="#about" 
               className="block text-white/90 font-semibold hover:text-white transition-colors px-4 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base"
