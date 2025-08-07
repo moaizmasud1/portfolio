@@ -449,12 +449,10 @@ export default function Portfolio() {
 
         {/* Mobile Navigation - Always visible below profile */}
         <div className="md:hidden px-3 sm:px-4 pb-3 sm:pb-4">
-          <nav className="flex justify-center gap-2 sm:gap-3">
-            <a href="#about" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">About</a>
-            <a href="#skills" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">Skills</a>
-            <a href="#projects" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">Projects</a>
-            <a href="#testimonials" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">Testimonials</a>
-            <a href="#contact" className="text-white/80 font-semibold hover:text-white transition-colors px-2 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-xs sm:text-sm">Contact</a>
+          <nav className="flex justify-center gap-3 sm:gap-4">
+            <a href="#about" className="text-white/80 font-semibold hover:text-white transition-colors px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm">About</a>
+            <a href="#projects" className="text-white/80 font-semibold hover:text-white transition-colors px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm">Projects</a>
+            <a href="#contact" className="text-white/80 font-semibold hover:text-white transition-colors px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm">Contact</a>
           </nav>
         </div>
 
