@@ -427,8 +427,7 @@ export default function Portfolio() {
         className={`fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[92vw] sm:w-[95vw] max-w-5xl rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur-lg shadow-xl border border-white/20 transition-transform duration-500 pointer-events-auto ${isMobile ? 'translate-y-0 opacity-100' : (showHeader ? 'translate-y-0 opacity-100' : '-translate-y-32 opacity-0 pointer-events-none')}`}
         onMouseEnter={() => !isMobile && setShowHeader(true)}
       >
-                {/* Main Header Content */}
-        <div className="flex items-center justify-between px-3 sm:px-4 md:px-8 py-3 sm:py-4">
+                <div className="flex items-center justify-between px-3 sm:px-4 md:px-8 py-3 sm:py-4">
           {/* Logo Section */}
           <div className="flex items-center gap-2 md:gap-3">
             <img src="/profile.jpg" alt="Logo" className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-xl sm:rounded-2xl object-cover shadow-lg" />
@@ -443,12 +442,10 @@ export default function Portfolio() {
             <a href="#testimonials" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Testimonials</a>
             <a href="#contact" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Contact</a>
           </nav>
-        </div>
 
-        {/* Mobile Menu Button - Separate Div */}
-        <div className="md:hidden flex justify-end px-3 sm:px-4 md:px-8 pb-2">
+          {/* Mobile Menu Button */}
           <button
-            className="p-2 rounded-lg text-white hover:bg-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="md:hidden p-2 rounded-lg text-white hover:bg-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400"
             onClick={() => {
               console.log('Hamburger clicked, current state:', isMobileMenuOpen);
               setIsMobileMenuOpen(!isMobileMenuOpen);
