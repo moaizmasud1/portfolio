@@ -459,8 +459,8 @@ export default function Portfolio() {
         </div>
 
         {/* Mobile Dropdown Menu */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-          <nav className="px-4 pb-4 space-y-2">
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white/10 backdrop-blur-lg border-t border-white/20 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+          <nav className="px-4 pb-4 pt-2 space-y-1">
             <a 
               href="#about" 
               className="block text-white/90 font-semibold hover:text-white transition-colors px-4 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base"
