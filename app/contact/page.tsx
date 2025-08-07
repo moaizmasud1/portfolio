@@ -211,11 +211,15 @@ This message was sent from your portfolio contact form.
         <header className="p-8">
           <Link href="/">
             <motion.div
-              className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors cursor-pointer"
+              className={`flex items-center gap-2 transition-colors cursor-pointer ${
+                isMobile 
+                  ? 'text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10' 
+                  : 'text-white hover:text-gray-300'
+              }`}
               whileHover={getMobileAnimation({ x: -5 })}
             >
-              <ArrowLeft size={24} />
-              <span className="font-bold">Back to Portfolio</span>
+              <ArrowLeft size={isMobile ? 20 : 24} />
+              <span className={`font-bold ${isMobile ? 'text-sm' : ''}`}>Back to Portfolio</span>
             </motion.div>
           </Link>
         </header>
