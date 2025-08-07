@@ -427,12 +427,12 @@ export default function Portfolio() {
         className={`fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[92vw] sm:w-[95vw] max-w-5xl rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur-lg shadow-xl border border-white/20 transition-transform duration-500 pointer-events-auto ${isMobile ? 'translate-y-0 opacity-100' : (showHeader ? 'translate-y-0 opacity-100' : '-translate-y-32 opacity-0 pointer-events-none')}`}
         onMouseEnter={() => !isMobile && setShowHeader(true)}
       >
-        <div className="flex items-center justify-between px-3 sm:px-4 md:px-8 py-3 sm:py-4">
+                <div className="flex items-center justify-between px-3 sm:px-4 md:px-8 py-3 sm:py-4">
           {/* Logo Section */}
           <div className="flex items-center gap-2 md:gap-3">
             <img src="/profile.jpg" alt="Logo" className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-xl sm:rounded-2xl object-cover shadow-lg" />
             <span className="font-black text-base sm:text-lg md:text-2xl tracking-tight text-white/95">My Profile</span>
-        </div>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-4 lg:gap-6">
@@ -441,17 +441,61 @@ export default function Portfolio() {
             <a href="#projects" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Projects</a>
             <a href="#testimonials" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Testimonials</a>
             <a href="#contact" className="text-white/80 font-semibold hover:text-white transition-colors px-2 md:px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm md:text-base">Contact</a>
-        </nav>
+          </nav>
 
-          {/* Mobile - Show only My Profile, no menu button */}
-          <div className="md:hidden"></div>
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 rounded-lg text-white hover:bg-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            <div className="w-6 h-6 flex flex-col justify-center items-center">
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
+            </div>
+          </button>
         </div>
 
-        {/* Mobile Navigation - Always visible below profile */}
-        <div className="md:hidden px-3 sm:px-4 pb-3 sm:pb-4">
-          <nav className="flex justify-center gap-4 sm:gap-6">
-            <a href="#about" className="text-white/80 font-semibold hover:text-white transition-colors px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm">About</a>
-            <a href="#contact" className="text-white/80 font-semibold hover:text-white transition-colors px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm">Contact</a>
+        {/* Mobile Dropdown Menu */}
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+          <nav className="px-4 pb-4 space-y-2">
+            <a 
+              href="#about" 
+              className="block text-white/90 font-semibold hover:text-white transition-colors px-4 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About
+            </a>
+            <a 
+              href="#skills" 
+              className="block text-white/90 font-semibold hover:text-white transition-colors px-4 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Skills
+            </a>
+            <a 
+              href="#projects" 
+              className="block text-white/90 font-semibold hover:text-white transition-colors px-4 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Projects
+            </a>
+            <a 
+              href="#testimonials" 
+              className="block text-white/90 font-semibold hover:text-white transition-colors px-4 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Testimonials
+            </a>
+            <a 
+              href="#contact" 
+              className="block text-white/90 font-semibold hover:text-white transition-colors px-4 py-3 rounded-lg hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-purple-400 text-base"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact
+            </a>
           </nav>
         </div>
 
